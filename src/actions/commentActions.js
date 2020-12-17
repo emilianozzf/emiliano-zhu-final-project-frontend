@@ -18,7 +18,7 @@ export const createComment = (commentData, history, postId) => dispatch => {
   // console.log("postid:"+postId);
   // app.use('/api/comments', comments);
   axios
-  .post(`/api/comments/${postId}/create`, commentData)
+  .post(`https://emiliano-zhu-final-backend.herokuapp.com/api/comments/${postId}/create`, commentData)
   // .post(`/api/posts/${postId}/comments/create`, commentData)
   .then(res => {
     // console.log("send:"+res)
@@ -43,7 +43,7 @@ export const getCommentByID = (id) => dispatch => {
   dispatch(togglePostLoading());
   console.log(id);
   axios
-  .get(`/api/comments/get/${id}`)
+  .get(`https://emiliano-zhu-final-backend.herokuapp.com/api/comments/get/${id}`)
   .then(res => {
     console.log(res)
     dispatch({

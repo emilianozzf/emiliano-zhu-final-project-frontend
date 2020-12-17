@@ -9,7 +9,7 @@ import { setErrors } from "./errorActions";
 export const registerUser = (userData, history) => dispatch => {
    dispatch(toggleUserLoading());
    axios
-      .post("/api/users/signup", userData)
+      .post("https://emiliano-zhu-final-backend.herokuapp.com/api/users/signup", userData)
       .then(res => {
          dispatch(toggleUserLoading());
          localStorage.setItem(
@@ -27,7 +27,7 @@ export const registerUser = (userData, history) => dispatch => {
 export const loginUser = userData => dispatch => {
    dispatch(toggleUserLoading());
    axios
-      .post("/api/users/login", userData)
+      .post("https://emiliano-zhu-final-backend.herokuapp.com/api/users/login", userData)
       .then(res => {
          dispatch(resetPost());
          const { token } = res.data;

@@ -43,7 +43,7 @@ export const createPost = (postData, history) => dispatch => {
    dispatch(togglePostLoading());
    // console.log(postData);
    axios
-      .post("/api/posts/create", postData)
+      .post("https://emiliano-zhu-final-backend.herokuapp.com/api/posts/create", postData)
       .then(res => {
          // console.log(postData)
          // console.log(res)
@@ -65,7 +65,7 @@ export const createPost = (postData, history) => dispatch => {
 export const getPostByID = id => dispatch => {
    dispatch(togglePostLoading());
    axios
-      .get(`/api/posts/post/${id}`)
+      .get(`https://emiliano-zhu-final-backend.herokuapp.com/api/posts/post/${id}`)
       .then(res => {
          dispatch({
             type: GET_POST,
@@ -84,7 +84,7 @@ export const getPostByID = id => dispatch => {
 export const getPostsByAuthor = author => dispatch => {
    dispatch(togglePostsLoading());
    axios
-      .get(`/api/posts/author/${author}`)
+      .get(`https://emiliano-zhu-final-backend.herokuapp.com/api/posts/author/${author}`)
       .then(res => {
          dispatch({
             type: GET_POSTS,
@@ -101,7 +101,7 @@ export const getPostsByAuthor = author => dispatch => {
 export const getPosts = () => dispatch => {
    dispatch(togglePostsLoading());
    axios
-      .get(`/api/posts/`)
+      .get(`https://emiliano-zhu-final-backend.herokuapp.com/api/posts/`)
       .then(res => {
          console.log(res)
          dispatch({
@@ -120,7 +120,7 @@ export const getPosts = () => dispatch => {
 export const updatePost = (id, postData, history) => dispatch => {
    dispatch(togglePostLoading());
    axios
-      .patch(`/api/posts/update/${id}`, postData)
+      .patch(`https://emiliano-zhu-final-backend.herokuapp.com/api/posts/update/${id}`, postData)
       .then(res => {
          dispatch({
             type: UPDATE_POST,
@@ -138,7 +138,7 @@ export const updatePost = (id, postData, history) => dispatch => {
 export const deletePost = (id, history) => dispatch => {
    dispatch(togglePostLoading());
    axios
-      .delete(`/api/posts/delete/${id}`)
+      .delete(`https://emiliano-zhu-final-backend.herokuapp.com/api/posts/delete/${id}`)
       .then(res => {
          dispatch({
             type: DELETE_POST,
