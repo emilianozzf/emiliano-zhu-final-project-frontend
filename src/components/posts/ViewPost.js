@@ -68,23 +68,23 @@ const ViewPost = ({ post, auth, onDelete, onEdit, onReply }) => {
              </Row>
          }
          <p className="text-light bg-dark font-weight-bold">Comments</p>
-         {/*<Comment*/}
-         {/*    auth={auth}*/}
-         {/*    comment={post.comments}*/}
-         {/*    onDelete={onDelete}*/}
-         {/*    onEdit={onEdit}*/}
-         {/*>*/}
+         <Comment
+            auth={auth}
+            comment={post.comments}
+            onDelete={onDelete}
+            onEdit={onEdit}
+         >
 
-         {/*</Comment>*/}
+         </Comment>
 
-        {/*<ListComment*/}
-        {/*    auth={auth}*/}
-        {/*    comment={post.comments}*/}
-        {/*    onDelete={onDelete}*/}
-        {/*    onEdit={onEdit}*/}
-        {/*>*/}
+        <ListComment
+           auth={auth}
+           comment={post.comments}
+           onDelete={onDelete}
+           onEdit={onEdit}
+        >
 
-        {/*</ListComment>*/}
+        </ListComment>
       </Container>
    );
 };
