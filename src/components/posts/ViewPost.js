@@ -1,99 +1,96 @@
-import React from "react";
-import PropTypes from "prop-types";
-import getFormattedDate from "../../utils/getFormattedDate";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import "./post.scss";
-import Comment from "./comment/Comment";
-import {Link} from "react-router-dom";
-import ListComment from "./comment/ListComment";
-import {getCommentByID} from "../../actions/commentActions";
+import React from 'react';
+import PropTypes from 'prop-types';
+import getFormattedDate from '../../utils/getFormattedDate';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import './post.scss';
+import Comment from './comment/Comment';
+import { Link } from 'react-router-dom';
 
-const ViewPost = ({ post, auth, onDelete, onEdit, onReply }) => {
-   const postDate = getFormattedDate(post.date);
-   // console.log(post.author);
-   // console.log(JSON.stringify(auth.user.user_name));
-  var user_id = (auth.isAuthenticated) ? JSON.stringify(auth.user.id).slice(1,-1):""
-  // console.log(post.author);
-  // console.log(user_id);
-  // console.log(post.author.id === user_id);
-  // console.log(post.comments[0]);
-   //false???
-  const comment = getCommentByID(post.comments[0]);
-  // console.log(comment)
+const ViewPost = ({ post, auth, onDelete, onEdit, onReply, onDeleteComment }) => {
+	const postDate = getFormattedDate(post.date);
+	var user_id = auth.isAuthenticated ? auth.user.id : '';
+	let comments = [];
+	for (let i = 0; i < post.comments.length; i++) {
+		comments.push(
+			<Comment
+				key={post.comments[i]._id}
+				auth={auth}
+				comment={post.comments[i]}
+				onDelete={() => onDeleteComment(post.comments[i]._id)}
+			/>
+		);
+	}
+	return (
+		<Container className="mt-4 viewPost">
+			<Container>
+			<Row>
+				<Link to="/discussion">
+					<i className="fas fa-backward" />
+					<strong>BACK</strong>
+				</Link>
+			</Row>
+			<Row>
+				<Col className="text-center postTitle" style={{color:"rgb(255,255,255)", fontWeight:"bold"}}>
+					<h2>{post.title}</h2>
+				</Col>
+			</Row>
+			<Row className="my-4" style={{ whiteSpace: 'pre-wrap', color:"rgb(255,255,255)",fontSize:"1.1em" }}>
+				<Col>{post.body}</Col>
+			</Row>
+			<Row className="d-flex flex-column font-italic footerStyle" style={{color: "rgb(200,198,198)",fontStyle: "italic"}}>
+				<Col>Created by : {post.author.user_name}</Col>
+				<Col>Date: {postDate}</Col>
+			</Row>
 
-   return (
-      <Container className="mt-4 viewPost">
-         <Row>
-            <Col className="text-center postTitle">
-               <h2>{post.title}</h2>
-            </Col>
-         </Row>
-         <Row className="my-4" style={{ whiteSpace: "pre-wrap" }}>
-            <Col>{post.body}</Col>
-         </Row>
-         <Row className="d-flex flex-column font-italic footerStyle">
-            <Col>Created by : {post.author.user_name}</Col>
-            <Col>Date: {postDate}</Col>
-         </Row>
-         if (auth)
-         {(auth.isAuthenticated && user_id === post.author.id) ? (
-            <Row className="mt-4 mb-5">
-               <Col className="text-center">
-                  <Button
-                     className="mr-2"
-                     variant="outline-info"
-                     onClick={onEdit}
-                  >
-                     Edit
-                  </Button>
-                  <Button className="mr-2" variant="outline-danger"  onClick={onDelete}>
-                     Delete
-                  </Button>
-                 {/*TODO: onclick = onComment*/}
-                 <Button variant="outline-success" onClick={onReply}>
-                   Reply
-                 </Button>
-               </Col>
-            </Row>
-         ):
-             <Row className="mt-4 mb-5">
-               <Col className="text-center">
-                 {/*TODO: onclick = onComment*/}
-                 {/*<Link to="/blog/post/${post._id}/create_comment">*/}
-                 <Button variant="outline-success" onClick={onReply}>
-                   Reply
-                 </Button>
-                 {/*</Link>*/}
-               </Col>
-             </Row>
-         }
-         <p className="text-light bg-dark font-weight-bold">Comments</p>
-         <Comment
-            auth={auth}
-            comment={post.comments}
-            onDelete={onDelete}
-            onEdit={onEdit}
-         >
-
-         </Comment>
-
-        <ListComment
-           auth={auth}
-           comment={post.comments}
-           onDelete={onDelete}
-           onEdit={onEdit}
-        >
-
-        </ListComment>
-      </Container>
-   );
+			{auth.isAuthenticated && user_id === post.author.id ? (
+				<Row className="mt-4 mb-5">
+					<Col className="text-center">
+						<button type="button" className="btn btn-warning" onClick={onEdit} style={{
+							marginRight:"10px",
+							fontSize:"bold"
+						}}>
+							Edit
+						</button>
+						<button type="button" class="btn btn-danger" onClick={onDelete} style={{
+							marginRight:"10px",
+							fontSize:"bold"
+						}}>
+							Delete
+						</button>
+						<button type="button" class="btn btn-success" onClick={onReply} style={{
+							marginRight:"10px",
+							fontSize:"bold"
+						}}>
+							Reply
+						</button>
+					</Col>
+				</Row>
+			) : (
+				<Row className="mt-4 mb-5">
+					<Col className="text-center">
+						<button type="button" className="btn btn-success" onClick={onReply}
+										style={{
+											marginRight: "10px",
+											fontSize: "bold"
+										}}>
+							Reply
+						</button>
+					</Col>
+				</Row>
+			)}
+			</Container>
+			<p style={{color:"rgba(234, 46, 73, 0.9)", fontSize:"1.5em", marginTop:"50px",
+				fontWeight:"bold"}}>Comments</p>
+			{comments}
+		</Container>
+	);
 };
 
 ViewPost.propTypes = {
-   post: PropTypes.object.isRequired,
-   auth: PropTypes.object.isRequired,
-   onEdit: PropTypes.func.isRequired,
-   onDelete: PropTypes.func.isRequired
+	post: PropTypes.object.isRequired,
+	auth: PropTypes.object.isRequired,
+	onEdit: PropTypes.func.isRequired,
+	onDelete: PropTypes.func.isRequired
 };
 
 export default ViewPost;
