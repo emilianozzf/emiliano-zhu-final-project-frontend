@@ -6,11 +6,10 @@ import Textarea from "../form/Textarea";
 import {Link} from "react-router-dom";
 
 const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
-    console.log(post)
-   const { title, body, id, errors } = post;
+   const { title, body, errors } = post;
    return (
       <Container>
-         {/*<Row>*/}
+         <Row>
             <Col className="mx-auto">
                <Form noValidate onSubmit={onSubmit} className="p-sm-3 p-xs-1">
                   <Input
@@ -39,32 +38,24 @@ const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
                      }}
                   />
                   <Button
-                     variant="success"
+                     variant="outline-danger"
                      type="submit"
                      disabled={loading}
-                     style={{
-                       marginBottom:"20px",
-                       marginTop:"15px",
-                       marginRight:"10px",
-                     }}
+                     className="mt-3"
                   >
                      Submit
                   </Button>
-                 <Link to={`/post/${id}`}>
+                 <Link to={"/"}>
                  <Button
-                     variant="danger"
+                     variant="outline-danger"
                      className="mt-3 ml-3"
-                     style={{
-                       marginBottom:"20px",
-                       marginTop:"15px"
-                     }}
                  >
-                   Cancel
+                   cancel
                  </Button>
                  </Link>
                </Form>
             </Col>
-         {/*</Row>*/}
+         </Row>
       </Container>
    );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Form, Button, Container, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import Textarea from "../../form/Textarea";
 import {Link} from "react-router-dom";
 
@@ -9,10 +9,8 @@ const CommentForm = ({ comment, postId, onChange, onBlur, loading, onSubmit }) =
   const { body, errors } = comment;
   return (
       <Container>
-      <div>
-
+        <Row>
           <Col className="mx-auto">
-
             <Form noValidate onSubmit={onSubmit} className="p-sm-3 p-xs-1">
               <Textarea
                   name="body"
@@ -27,35 +25,26 @@ const CommentForm = ({ comment, postId, onChange, onBlur, loading, onSubmit }) =
                   }}
               />
               <Button
-                  variant="success"
+                  variant="outline-danger"
                   type="submit"
                   disabled={loading}
-                  style={{
-                    marginBottom:"20px",
-                    marginTop:"15px",
-                    marginRight:"10px",
-                  }}
+                  className="mt-3"
               >
                 Submit
               </Button>
 
-              <Link to={`/post/${postId}`}>
+              <Link to={`/blog/post/${postId}`}>
               <Button
-                  variant="danger"
-                  style={{
-                    marginBottom:"20px",
-                    marginTop:"15px"
-                  }}
+                  variant="outline-danger"
+                  className="mt-3 ml-3"
               >
                 Cancel
               </Button>
               </Link>
 
             </Form>
-
           </Col>
-        </div>
-
+        </Row>
       </Container>
   );
 };

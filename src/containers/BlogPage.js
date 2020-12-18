@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Blog from "../components/user/Blog";
 import { getPosts, getPostsByAuthor } from "../actions/postActions";
 
-
 const BlogPage = ({
    isAuthenticated,
    getPostsByAuthor,
@@ -18,14 +17,7 @@ const BlogPage = ({
    }, [isAuthenticated, getPosts, getPostsByAuthor, match]);
    // console.log(JSON.stringify(posts));
    // console.log(posts[0]);
-   return (
-
-       <div>
-          {/*<Navbar />*/}
-          {/*<Jumbotron />*/}
-         <Blog posts={posts} auth={isAuthenticated} />
-       </div>
-       );
+   return (<Blog posts={posts} auth={isAuthenticated} />);
 };
 
 const mapStateToProps = state => ({

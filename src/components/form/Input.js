@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Input = ({ name, type, placeholder, value, onChange, onBlur, text }) => {
    return (
       <Form.Group controlId={text.module + name}>
-         <Form.Label style={{color:"rgb(255,255,255)", fontWeight:"bold"}}>{text.label}</Form.Label>
+         <Form.Label>{text.label}</Form.Label>
          <Form.Control
             name={name}
             type={type}

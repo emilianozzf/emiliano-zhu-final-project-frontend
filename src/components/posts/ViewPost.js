@@ -22,65 +22,49 @@ const ViewPost = ({ post, auth, onDelete, onEdit, onReply, onDeleteComment }) =>
 	}
 	return (
 		<Container className="mt-4 viewPost">
-			<Container>
 			<Row>
-				<Link to="/discussion">
+				<Link to="/">
 					<i className="fas fa-backward" />
-					<strong>BACK</strong>
+					BACK
 				</Link>
 			</Row>
 			<Row>
-				<Col className="text-center postTitle" style={{color:"rgb(255,255,255)", fontWeight:"bold"}}>
+				<Col className="text-center postTitle">
 					<h2>{post.title}</h2>
 				</Col>
 			</Row>
-			<Row className="my-4" style={{ whiteSpace: 'pre-wrap', color:"rgb(255,255,255)",fontSize:"1.1em" }}>
+			<Row className="my-4" style={{ whiteSpace: 'pre-wrap' }}>
 				<Col>{post.body}</Col>
 			</Row>
-			<Row className="d-flex flex-column font-italic footerStyle" style={{color: "rgb(200,198,198)",fontStyle: "italic"}}>
+			<Row className="d-flex flex-column font-italic footerStyle">
 				<Col>Created by : {post.author.user_name}</Col>
 				<Col>Date: {postDate}</Col>
 			</Row>
-
 			{auth.isAuthenticated && user_id === post.author.id ? (
 				<Row className="mt-4 mb-5">
 					<Col className="text-center">
-						<button type="button" className="btn btn-warning" onClick={onEdit} style={{
-							marginRight:"10px",
-							fontSize:"bold"
-						}}>
+						<Button className="mr-2" variant="outline-info" onClick={onEdit}>
 							Edit
-						</button>
-						<button type="button" class="btn btn-danger" onClick={onDelete} style={{
-							marginRight:"10px",
-							fontSize:"bold"
-						}}>
+						</Button>
+						<Button className="mr-2" variant="outline-danger" onClick={onDelete}>
 							Delete
-						</button>
-						<button type="button" class="btn btn-success" onClick={onReply} style={{
-							marginRight:"10px",
-							fontSize:"bold"
-						}}>
+						</Button>
+						<Button variant="outline-success" onClick={onReply}>
 							Reply
-						</button>
+						</Button>
 					</Col>
 				</Row>
 			) : (
 				<Row className="mt-4 mb-5">
 					<Col className="text-center">
-						<button type="button" className="btn btn-success" onClick={onReply}
-										style={{
-											marginRight: "10px",
-											fontSize: "bold"
-										}}>
+						<Button variant="outline-success" onClick={onReply}>
 							Reply
-						</button>
+						</Button>
+						{/*</Link>*/}
 					</Col>
 				</Row>
 			)}
-			</Container>
-			<p style={{color:"rgba(234, 46, 73, 0.9)", fontSize:"1.5em", marginTop:"50px",
-				fontWeight:"bold"}}>Comments</p>
+			<p className="text-light bg-dark font-weight-bold">Comments</p>
 			{comments}
 		</Container>
 	);

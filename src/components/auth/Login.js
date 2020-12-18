@@ -15,11 +15,8 @@ import {
 const Login = ({ message, loading, user, onChange, onBlur, onSubmit }) => {
    const { email, password, errors } = user;
    return (
-      <Container >
-         <Row style={{
-            display: "flex",
-            justifyContent:"center"
-         }}>
+      <Container>
+         <Row>
             <Col className="mx-auto" sm={11} md={7} lg={5}>
                <Card className="my-4">
                   <Form
@@ -72,9 +69,9 @@ const Login = ({ message, loading, user, onChange, onBlur, onSubmit }) => {
                            Submit
                         </Button>
 
-                        <Card.Text style={{color:"rgb(200,198,198)", marginTop:"10px"}}>
+                        <Card.Text className="mt-2">
                            Don't have an account?{" "}
-                           <Link to={"/signup"}><strong>SignUp</strong></Link>
+                           <Link to={"/signup"}>SignUp</Link>
                         </Card.Text>
                      </Card.Body>
                   </Form>

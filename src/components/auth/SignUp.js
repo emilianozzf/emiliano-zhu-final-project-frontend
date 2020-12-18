@@ -8,10 +8,7 @@ const SignUp = ({ loading, user, onBlur, onChange, onSubmit }) => {
    const { user_name, email, password, errors } = user;
    return (
       <Container>
-         <Row style={{
-           display: "flex",
-           justifyContent:"center"
-         }}>
+         <Row>
             <Col className="mx-auto" sm={11} md={7} lg={5}>
                <Card className="my-4">
                   <Form
@@ -73,9 +70,9 @@ const SignUp = ({ loading, user, onBlur, onChange, onSubmit }) => {
                         >
                            Submit
                         </Button>
-                        <Card.Text style={{color:"rgb(200,198,198)", marginTop:"10px"}}>
+                        <Card.Text className="mt-2">
                            Already have an account?{" "}
-                           <Link to={"/login"}><strong>Login</strong></Link>.
+                           <Link to={"/login"}>Login</Link>.
                         </Card.Text>
                      </Card.Body>
                   </Form>

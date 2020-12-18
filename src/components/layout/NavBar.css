@@ -4,7 +4,7 @@
   margin-bottom: 1px;
 }
 
-#headline:hover {
+p:hover {
   color: #fff;
   border-bottom: 1px solid red;
   margin-bottom: 1px;

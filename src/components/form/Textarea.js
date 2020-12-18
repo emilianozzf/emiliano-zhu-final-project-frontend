@@ -4,9 +4,8 @@ import Form from "react-bootstrap/Form";
 
 const Textarea = ({ name, placeholder, value, onChange, onBlur, text }) => {
    return (
-
       <Form.Group controlId={text.module + name}>
-         <Form.Label style={{color:"rgb(255,255,255)", fontWeight:"bold"}}>{text.label}</Form.Label>
+         <Form.Label>{text.label}</Form.Label>
          <Form.Control
             name={name}
             as="textarea"
@@ -21,7 +20,6 @@ const Textarea = ({ name, placeholder, value, onChange, onBlur, text }) => {
             {text.error}
          </Form.Control.Feedback>
       </Form.Group>
-
    );
 };
 
