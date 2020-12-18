@@ -12,51 +12,20 @@ import {
 
 import { setErrors, clearErrors } from "./errorActions";
 
-// '/api/posts/:id/comments'
-
-// export const createComment = (commentData, history, postId) => dispatch => {
-//    // dispatch(togglePostLoading());
-//    console.log(commentData);
-//    console.log("commentData:"+ JSON.stringify(commentData));
-//    console.log("history:"+ JSON.stringify(history));
-//    console.log("postid:"+postId);
-//    axios
-//    .post(`/api/posts/${postId}/comments/create`, commentData)
-//    .then(res => {
-//       // console.log("send:"+res)
-//       dispatch({
-//          type: CREATE_COMMENT,
-//          payload: res.data
-//       });
-//
-//       dispatch(togglePostLoading());
-//       history.push(`/blog/post/${postId}`);
-//    })
-//    .catch(err => {
-//       // console.log(err)
-//       dispatch(setErrors(err.response.data));
-//       dispatch(togglePostLoading());
-//    });
-// };
 
 export const createPost = (postData, history) => dispatch => {
    dispatch(togglePostLoading());
-   // console.log(postData);
    axios
       .post("https://emiliano-zhu-final-backend.herokuapp.com/api/posts/create", postData)
       .then(res => {
-         // console.log(postData)
-         // console.log(res)
          dispatch({
             type: CREATE_POST,
             payload: res.data
          });
-
          dispatch(togglePostLoading());
-         history.push("/blog");
+         history.push("/");
       })
       .catch(err => {
-         // console.log(err)
          dispatch(setErrors(err.response.data));
          dispatch(togglePostLoading());
       });
@@ -103,7 +72,7 @@ export const getPosts = () => dispatch => {
    axios
       .get(`https://emiliano-zhu-final-backend.herokuapp.com/api/posts/`)
       .then(res => {
-         console.log(res)
+         // console.log(res)
          dispatch({
             type: GET_POSTS,
             payload: res.data
@@ -127,7 +96,7 @@ export const updatePost = (id, postData, history) => dispatch => {
             payload: res.data
          });
          dispatch(togglePostLoading());
-         history.push(`/blog/post/${res.data._id}`);
+         history.push(`/post/${res.data._id}`);
       })
       .catch(err => {
          dispatch(setErrors(err.response.data));
@@ -145,7 +114,7 @@ export const deletePost = (id, history) => dispatch => {
             payload: id
          });
          dispatch(togglePostLoading());
-         history.push("/blog");
+         history.push("/");
       })
       .catch(err => {
          dispatch(setErrors(err.response.data));

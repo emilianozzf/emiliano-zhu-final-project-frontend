@@ -17,6 +17,7 @@ const UpdatePostPage = ({
    const [post, setPost] = useState({
       title: "",
       body: "",
+      id:"",
       errors: {}
    });
 
@@ -29,6 +30,7 @@ const UpdatePostPage = ({
       setPost(post => ({
          title: currentPost.title,
          body: currentPost.body,
+         id: currentPost._id,
          errors: { ...post.errors }
       }));
    }, [currentPost]);
@@ -54,7 +56,8 @@ const UpdatePostPage = ({
 
    const handleSubmit = e => {
       e.preventDefault();
-      const { title, body } = post;
+      const { title, body} = post;
+
       updatePost(currentPost._id, { title, body }, history);
    };
 

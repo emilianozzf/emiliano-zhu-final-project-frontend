@@ -23,17 +23,13 @@ const Blog = ({ posts, auth }) => {
 
    return (
       <React.Fragment>
+         <Container>
+
          <div className="mx-3">
             <Nav className="justify-content-between mt-2 mb-2">
-               {/*{auth && (*/}
-                  <Link to="/blog/post/create">
-                     <Button variant="light" className="styleBtn">
-                        +
-                     </Button>
-                  </Link>
-               {/*// )}*/}
+
                <Form>
-                  <Form.Group controlId="searchBar">
+                  <Form.Group controlId="searchBar" className="mt-3">
                      <Form.Control
                         type="text"
                         placeholder="Search Post..."
@@ -43,6 +39,23 @@ const Blog = ({ posts, auth }) => {
                      />
                   </Form.Group>
                </Form>
+
+               <Link to="/post/create">
+                  <Button variant="light" className="styleBtn" style={{
+                     marginBottom:"10px"
+                  }}>
+                     +
+                  </Button>
+                  {/*<span style={{*/}
+                  {/*   color: "#cd4f39",*/}
+                  {/*   // color: "white",*/}
+                  {/*   // fontLine*/}
+                  {/*   fontWeight: "bold",*/}
+                  {/*   fontSize: "1.5em"*/}
+
+                  {/*}}>    Create new post</span>*/}
+
+               </Link>
             </Nav>
          </div>
          {posts.length > 0 ? (
@@ -62,6 +75,8 @@ const Blog = ({ posts, auth }) => {
                </Container>
             )
          )}
+
+         </Container>
       </React.Fragment>
    );
 };

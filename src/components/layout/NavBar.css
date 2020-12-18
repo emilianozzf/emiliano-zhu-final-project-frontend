@@ -1,0 +1,11 @@
+#home:hover {
+  color: #fff;
+  border-bottom: 1px solid red;
+  margin-bottom: 1px;
+}
+
+#headline:hover {
+  color: #fff;
+  border-bottom: 1px solid red;
+  margin-bottom: 1px;
+}

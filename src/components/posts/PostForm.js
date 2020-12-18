@@ -3,12 +3,14 @@ import PropTypes from "prop-types";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import Input from "../form/Input";
 import Textarea from "../form/Textarea";
+import {Link} from "react-router-dom";
 
 const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
-   const { title, body, errors } = post;
+    console.log(post)
+   const { title, body, id, errors } = post;
    return (
       <Container>
-         <Row>
+         {/*<Row>*/}
             <Col className="mx-auto">
                <Form noValidate onSubmit={onSubmit} className="p-sm-3 p-xs-1">
                   <Input
@@ -37,16 +39,32 @@ const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
                      }}
                   />
                   <Button
-                     variant="outline-danger"
+                     variant="success"
                      type="submit"
                      disabled={loading}
-                     className="mt-3"
+                     style={{
+                       marginBottom:"20px",
+                       marginTop:"15px",
+                       marginRight:"10px",
+                     }}
                   >
                      Submit
                   </Button>
+                 <Link to={`/post/${id}`}>
+                 <Button
+                     variant="danger"
+                     className="mt-3 ml-3"
+                     style={{
+                       marginBottom:"20px",
+                       marginTop:"15px"
+                     }}
+                 >
+                   Cancel
+                 </Button>
+                 </Link>
                </Form>
             </Col>
-         </Row>
+         {/*</Row>*/}
       </Container>
    );
 };
