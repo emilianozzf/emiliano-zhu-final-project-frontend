@@ -25,11 +25,13 @@ const Blog = ({ posts, auth }) => {
       <React.Fragment>
          <div className="mx-3">
             <Nav className="justify-content-between mt-2 mb-2">
-               <Link to="/post/create">
-                  <Button variant="light" className="styleBtn">
-                     +
-                  </Button>
-               </Link>
+               {/*{auth && (*/}
+                  <Link to="/blog/post/create">
+                     <Button variant="light" className="styleBtn">
+                        +
+                     </Button>
+                  </Link>
+               {/*// )}*/}
                <Form>
                   <Form.Group controlId="searchBar">
                      <Form.Control

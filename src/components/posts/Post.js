@@ -10,8 +10,11 @@ const Post = ({ post }) => {
    return (
 
       <Card className="deckStyle" style={{ border: "none" }}>
+        {/*<Card.Header>{post.author}</Card.Header>*/}
+        {/*<Card.Img variant="top" src="holder.js/100px180" />*/}
          <Card.Body className="postCover">
             <Card.Title className="text-center p-5">{post.title}</Card.Title>
+            {/*<Card.Text className="mb-2">{post.author}</Card.Text>*/}
          </Card.Body>
          <Card.Footer>
             <small className="text-muted">Author: {post.author.user_name}</small>

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import Input from "../form/Input";
 import Textarea from "../form/Textarea";
-import {Link} from "react-router-dom";
 
 const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
    const { title, body, errors } = post;
@@ -45,14 +44,6 @@ const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
                   >
                      Submit
                   </Button>
-                 <Link to={"/"}>
-                 <Button
-                     variant="outline-danger"
-                     className="mt-3 ml-3"
-                 >
-                   cancel
-                 </Button>
-                 </Link>
                </Form>
             </Col>
          </Row>

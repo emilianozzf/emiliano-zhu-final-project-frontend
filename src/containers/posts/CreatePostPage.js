@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { createPost } from "../../actions/postActions";
 
 const CreatePostPage = ({ errors, createPost, loading, history }) => {
+   // console.log(errors)
    const [post, setPost] = useState({
       title: "",
       body: "",
@@ -36,7 +37,8 @@ const CreatePostPage = ({ errors, createPost, loading, history }) => {
    const handleSubmit = e => {
       e.preventDefault();
       const { title, body } = post;
-      // console.log(post);
+      console.log(post);
+      // createPost({ title, body }, history);
       createPost(post, history);
    };
 

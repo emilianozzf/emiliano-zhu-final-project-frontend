@@ -10,7 +10,7 @@ const Navbar = ({ auth, logoutUser }) => {
       logoutUser();
    };
    var username = auth.isAuthenticated ? JSON.stringify(auth.user.user_name).slice(1,-1): "";
-   // console.log(username);
+   console.log(username);
 
    return <NavigationBar auth={auth.isAuthenticated} username={username} onClick={handleClick} />;
 };

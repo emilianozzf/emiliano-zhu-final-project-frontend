@@ -1,17 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+// import Input from "../form/Input";//
 import Textarea from "../../form/Textarea";
-import {Link} from "react-router-dom";
 
 
-const CommentForm = ({ comment, postId, onChange, onBlur, loading, onSubmit }) => {
-  const { body, errors } = comment;
+const CommentForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
+  const { body, errors } = post;
   return (
       <Container>
         <Row>
           <Col className="mx-auto">
             <Form noValidate onSubmit={onSubmit} className="p-sm-3 p-xs-1">
+              {/*<Input*/}
+              {/*    name="title"*/}
+              {/*    type="text"*/}
+              {/*    placeholder="Enter Post Title"*/}
+              {/*    value={title}*/}
+              {/*    onChange={onChange}*/}
+              {/*    onBlur={onBlur}*/}
+              {/*    text={{*/}
+              {/*      module: "post",*/}
+              {/*      label: "Title",*/}
+              {/*      error: errors.title*/}
+              {/*    }}*/}
+              {/*/>*/}
               <Textarea
                   name="body"
                   placeholder="Write your comment here..."
@@ -32,16 +45,6 @@ const CommentForm = ({ comment, postId, onChange, onBlur, loading, onSubmit }) =
               >
                 Submit
               </Button>
-
-              <Link to={`/blog/post/${postId}`}>
-              <Button
-                  variant="outline-danger"
-                  className="mt-3 ml-3"
-              >
-                Cancel
-              </Button>
-              </Link>
-
             </Form>
           </Col>
         </Row>
@@ -50,7 +53,7 @@ const CommentForm = ({ comment, postId, onChange, onBlur, loading, onSubmit }) =
 };
 
 CommentForm.propTypes = {
-  comment: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   onBlur: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
